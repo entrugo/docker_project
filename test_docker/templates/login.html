@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Ajoutez du style CSS pour diviser les sections AFC et NFC en 50% chacune -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .conference-section {
+            display: flex;
+            width: 100%;
+        }
+
+        .conference {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .conference-container {
+            margin-bottom: 20px;
+        }
+
+        .conference ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .conference ul li {
+            margin-bottom: 5px;
+        }
+
+        .team-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .team-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Section pour les conférences et divisions NFL -->
+    <div class="conference-section">
+        <div class="conference">
+            <h3>NFL Conferences and Divisions</h3>
+            <!-- AFC -->
+            <div class="conference-container">
+
+                <h4>AFC Teams</h4>
+                <!-- AFC East -->
+                <div>
+                    <h5>AFC East</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('buffalo-bills')">Buffalo Bills</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('miami-dolphins')">Miami Dolphins</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('new-england-patriots')">New England Patriots</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('new-york-jets')">New York Jets</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AFC North -->
+                <div>
+                    <h5>AFC North</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('baltimore-ravens')">Baltimore Ravens</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('cincinnati-bengals')">Cincinnati Bengals</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('cleveland-browns')">Cleveland Browns</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('pittsburgh-steelers')">Pittsburgh Steelers</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AFC South -->
+                <div>
+                    <h5>AFC South</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('houston-texans')">Houston Texans</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('indianapolis-colts')">Indianapolis Colts</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('jacksonville-jaguars')">Jacksonville Jaguars</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('tennessee-titans')">Tennessee Titans</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AFC West -->
+                <div>
+                    <h5>AFC West</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('denver-broncos')">Denver Broncos</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('kansas-city-chiefs')">Kansas City Chiefs</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('las-vegas-raiders')">Las Vegas Raiders</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('los-angeles-chargers')">Los Angeles Chargers</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- NFC -->
+            <div class="conference-container">
+
+                <h4>NFC Teams</h4>
+                <!-- NFC East -->
+                <div>
+                    <h5>NFC East</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('dallas-cowboys')">Dallas Cowboys</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('new-york-giants')">New York Giants</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('philadelphia-eagles')">Philadelphia Eagles</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('washington-football-team')">Washington Football Team</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NFC North -->
+                <div>
+                    <h5>NFC North</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('chicago-bears')">Chicago Bears</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('detroit-lions')">Detroit Lions</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('green-bay-packers')">Green Bay Packers</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('minnesota-vikings')">Minnesota Vikings</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NFC South -->
+                <div>
+                    <h5>NFC South</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('atlanta-falcons')">Atlanta Falcons</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('carolina-panthers')">Carolina Panthers</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('new-orleans-saints')">New Orleans Saints</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('tampa-bay-buccaneers')">Tampa Bay Buccaneers</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NFC West -->
+                <div>
+                    <h5>NFC West</h5>
+                    <ul>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('arizona-cardinals')">Arizona Cardinals</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('los-angeles-rams')">Los Angeles Rams</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('san-francisco-49ers')">San Francisco 49ers</button>
+                        </li>
+                        <li>
+                            <button class="team-button" onclick="selectTeam('seattle-seahawks')">Seattle Seahawks</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>            
+        </div>
+    </div>
+
+
+    <!-- Ajoutez un script JavaScript pour rediriger vers la page de l'équipe sélectionnée -->
+    <script>
+        function selectTeam(teamname) {
+            window.location.href = `/team/${teamname}`;
+        }
+    </script>
+</body>
+</html>
