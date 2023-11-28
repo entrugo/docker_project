@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: database_NFL
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - ./init_db.py:/docker-entrypoint-initdb.d/init_db.py
+      - ./NFLstats.csv:/docker-entrypoint-initdb.d/NFLstats.csv
